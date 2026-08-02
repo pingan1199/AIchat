@@ -2,6 +2,8 @@
 
 一个基于 Python + Flet 的 AI 聊天桌面应用,内置"狗头军师"人设,擅长情感/关系问题分析。
 
+> "狗头军师"人设与知识库来自开源项目 [powerycy/goutoujunshi](https://github.com/powerycy/goutoujunshi)(⭐1.5k),感谢原作者。
+
 ## 功能
 
 - 💬 AI 对话(默认模型:google/gemma-4-31b-it,支持视觉)
