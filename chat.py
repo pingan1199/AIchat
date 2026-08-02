@@ -51,10 +51,14 @@ def clean_markdown(text):
     import re
     if not isinstance(text, str):
         return text
-    text = re.sub(r"\*\*([^*]+)\*\*", r"\1", text)
-    text = text.replace("**", "").replace("*", "")
-    text = re.sub(r"(?m)^#{1,6}\s*", "", text)
+    # 先正常处理成对粗体(渲染成真粗体,交给 Markdown)
+    # 只清理"残缺"的裸符号:不成对的星号、孤立井号、LaTeX 残留
     text = text.replace("\\rightarrow", "->").replace("\\Rightarrow", "=>")
+    # 去掉行首单独出现的 #(无内容跟随的孤立标题符)
+    text = re.sub(r"(?m)^#{1,6}\s*$", "", text)
+    # 清理不成对的孤立星号:先统计,把落单的 * 去掉(成对保留给 Markdown 渲染)
+    # 简化:去掉被文本包围的单个 * (非成对)
+    text = re.sub(r"(?<!\*)\*(?!\*)", "", text)
     return text
 
 def save_history():
@@ -69,8 +73,8 @@ def load_history():
         return []
     except json.JSONDecodeError:
         import shutil,time
-        backup = f"hostory.json.bak-{int(time.time())}"
-        shutil.copy(f"hostory.json", backup)
+        backup = f"history.json.bak-{int(time.time())}"
+        shutil.copy("history.json", backup)
         return[]
 MEMORY_FILE = "memory.json"
 memory = []
@@ -113,7 +117,7 @@ def extract_facts(recent):
 
 def update_memory():
     try:
-        recent = history[-2:]
+        recent = history[-4:]
         if len(recent) < 2:
             return
         new_facts = extract_facts(recent)
