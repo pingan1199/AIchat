@@ -1,10 +1,19 @@
 # AIchat - 狗头军师
 
-一个基于 Python + Flet 的 AI 聊天桌面应用,内置"狗头军师"人设,擅长情感/关系问题分析。
+一个基于 **Python + Flet** 开发的 AI 聊天桌面应用,内置"狗头军师"人设,擅长情感/关系问题分析,支持上传聊天截图让 AI 分析情绪与关系走向。
 
-> "狗头军师"人设与知识库来自开源项目 [powerycy/goutoujunshi](https://github.com/powerycy/goutoujunshi)(⭐1.5k),感谢原作者。
+## 📌 致谢与出处
 
-## 功能
+本项目中的"狗头军师"**人设与知识库**来自开源项目:
+
+> **[powerycy/goutoujunshi](https://github.com/powerycy/goutoujunshi)**(⭐1.5k)
+> 一个先接住情绪、再分析关系并给出可执行策略的 Codex 恋爱军师,内置心理、法律、社会、人文、哲学、婚姻家庭与性学知识库。
+
+本项目 **AIchat** 是基于上述 skill 的 **Python 桌面应用化实现**:使用 Python + Flet 搭建了完整的聊天界面、记忆系统、图片分析等能力,并将该 skill 作为系统提示词接入 AI 对话。
+
+**感谢原作者 [powerycy](https://github.com/powerycy) 的开源贡献。**
+
+## ✨ 功能
 
 - 💬 AI 对话(默认模型:google/gemma-4-31b-it,支持视觉)
 - 📷 图片分析(上传聊天截图,AI 分析情绪与关系)
@@ -13,12 +22,12 @@
 - 🔄 网络异常自动重试(3 次)
 - 🎨 现代化聊天 UI(气泡、角色标签、Markdown 渲染、空状态欢迎页)
 
-## 环境要求
+## 🔧 环境要求
 
 - Python 3.10+
 - 中转站 API(兼容 OpenAI 格式)
 
-## 安装与运行
+## 🚀 安装与运行
 
 ```bash
 # 1. 创建虚拟环境
@@ -34,7 +43,7 @@ python -m venv .venv
 .venv\Scripts\python chat.py
 ```
 
-## 配置
+## ⚙️ 配置
 
 复制 `.env.example` 为 `.env`:
 
@@ -49,7 +58,7 @@ AICHAT_API_KEY=你的API密钥
 | `API_URL` | 中转站地址(OpenAI 兼容) |
 | `MODEL` | 模型名(支持视觉的模型可看图) |
 
-## 打包成 exe
+## 📦 打包成 exe
 
 ```bash
 .venv\Scripts\flet pack chat.py --name AIchat --distpath dist
@@ -57,6 +66,6 @@ AICHAT_API_KEY=你的API密钥
 
 打包后需将 `skills/SKILL.md` 复制到 `dist/skills/` 目录(人设文件)。
 
-## 免责声明
+## 📜 免责声明
 
-本项目仅供学习交流使用,请遵守相关法律法规及 API 服务商的使用条款。
+本项目仅供学习交流使用,请遵守相关法律法规及 API 服务商的使用条款。AI 建议仅供参考,不替代专业心理咨询或法律意见。
