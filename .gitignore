@@ -1,0 +1,24 @@
+# 密钥与隐私(绝不提交!)
+.env
+config.py
+history.json
+memory.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.idea/
+
+# 打包产物
+dist/
+build/
+*.spec
+
+# 杂项
+chat - 副本.py
+test1.py
+build_log.txt
+main.py
